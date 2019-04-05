@@ -29,17 +29,19 @@ public class UserOfComparability {
         System.out.println( System.lineSeparator()
                           + "Date comparisons");
 
-        compareDates( "same date", d0 , new Date( 1000,6,15), "0");
-        compareDates( "bigger date", d0 , new Date( 1001,6,15), "-1");
-        compareDates( "smaller date", d0 , new Date( 10,6,15), "1");
-        compareDates( "same year bigger month", d0 , new Date( 1000,7,10), "-1");
-        compareDates( "same year smaller month", d0 , new Date( 1000,5,15), "1");
-        compareDates( "bigger year smaller month", d0 , new Date( 1001,1,15), "-1");
-        compareDates( "smaller year, same month, bigger day", d0 , new Date( 1,6,111), "1");
+        reportRelationship( "same date", d0 , new Date( 1000,6,15), "0");
+        reportRelationship( "bigger date", d0 , new Date( 1001,6,15), "-1");
+        reportRelationship( "smaller date", d0 , new Date( 10,6,15), "1");
+        reportRelationship( "same year bigger month", d0 , new Date( 1000,7,10), "-1");
+        reportRelationship( "same year smaller month", d0 , new Date( 1000,5,15), "1");
+        reportRelationship( "bigger year smaller month", d0 , new Date( 1001,1,15), "-1");
+        reportRelationship( "smaller year, same month, bigger day", d0 , new Date( 1,6,111), "1");
 
-        //(new IncomparableDog()).compareTo(new InconmparableDog());
 
-        //System.out.println(p0.compareTo(d0));
+        //reportRelationship("DOGS." , new IncomparableDog() , new IncomparableDog() , "?");
+        //reportRelationship("point and date" , p0 , d0 , "?");
+
+
 
     }
 
@@ -49,8 +51,8 @@ public class UserOfComparability {
      */
     private static void reportRelationship
       ( String description
-      , Point a
-      , Point b
+      , Comparable a
+      , Comparable b
       , String expect
       ) {
         System.out.println( description);
@@ -68,28 +70,6 @@ public class UserOfComparability {
           + " ...expecting " + expect
           + System.lineSeparator());
      }
-
-     private static void compareDates
-       ( String description
-       , Date a
-       , Date b
-       , String expect
-       ) {
-         System.out.println( description);
-
-         // check
-         System.out.println(
-             a + " compareTo " + b + ": "
-           + a.compareTo( b)
-             /* eventually expecting a compiler warning:
-               warning: [unchecked] unchecked call to compareTo(T) as a member of the raw type Comparable
-               where T is a type-variable:
-                 T extends Object declared in interface Comparable
-              */
-
-           + " ...expecting " + expect
-           + System.lineSeparator());
-      }
 
 
 }

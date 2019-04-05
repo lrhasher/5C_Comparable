@@ -1,17 +1,15 @@
 /**
   Represent a date
  */
-public class Date{
+public class Date implements Comparable{
     private int y,m,d;
 
     public int compareTo(Object otherObj) {
         int result;
         if(    (result = ((Integer)y).compareTo(((Date)otherObj).y)) == 0
             && (result = ((Integer)m).compareTo(((Date)otherObj).m)) == 0
-            && (result = ((Integer)d).compareTo(((Date)otherObj).d)) == 0)
-            return 0;
-        else
-            return result;
+            && (result = ((Integer)d).compareTo(((Date)otherObj).d)) == 0);
+        return result;
     }
     // -------- previously-written code --------
     // constructor
